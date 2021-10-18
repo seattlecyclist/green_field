@@ -45,6 +45,15 @@ gem "bootsnap", ">= 1.4.4", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Note on devise.
+# There was a breaking change in rails 7 that causes devise to break
+# /Users/mike/.rbenv/versions/2.7.4/lib/ruby/gems/2.7.0/gems/devise-4.8.0/lib/devise.rb:321:in `ref': undefined method `reference' for ActiveSupport::Dependencies:Module (NoMethodError)
+# Per this PR https://github.com/heartcombo/devise/pull/5357 a fix is now
+# merged into master/main.  So once a gem is released with this fix in it, we can use that version. till then
+# we must use master
+# gem "devise"
+gem "devise", github: "heartcombo/devise", branch: "main"
+
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
   gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
